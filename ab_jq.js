@@ -24,6 +24,40 @@ let $ = (function(){
 				})
 				return this;
 			}
+			// 总仓
+			// sDom是元素，fn是
+			GeneralWarehouse(sDom,fn){
+				var collect = this.EnterGoods(sDom);
+                var commodity = this.Shipments(collect);
+                this.from.forEach(function(val){
+                    if(commodity instanceof Array){
+                        commodity.forEach(function(dom){
+                        	fn(val,dom);
+                            // val.appendChild(dom);
+                        })
+                    }else{
+                    	fn(val,dom)
+                        // val.appendChild(commodity);
+                    }
+                })
+			}
+			//入库
+			EnterGoods(sDom){
+				//元素数组,家属数组，包装后的数组
+				let els,family,collect = [];
+				if(sDom.indexOf("<")==-1){
+					[els,family]= this.turnHTML(sDom); 
+					els.forEach((val,i)=>{
+						var familyi = undefined;
+						val = this.Scalpel(val);
+						if(i)familyi = family[i-1];
+						this.Packing(familyi,this.machining(val),collect);
+					})      
+					return collect.reverse(); 
+				}else{
+
+				}
+			}
 			//原材料切割
 			turnHTML(sDom){
 				let element = sDom.match(/[^>+]+/g);//截取元素
@@ -33,6 +67,25 @@ let $ = (function(){
 			//小刀切割，元素切割出来的数组
 			Scalpel(sDom){
 				return sDom.match(/[#\.]?[^\s\.#\[\{]+=?[\w\/?]*[\]\}]?|[\[\{]?[^\]\}]+=?[\w\/?]*[\]\}]?/gi);
+			}
+			//出货
+			Shipments(collect){
+				for(let i = 0;i<collect.length-1;i++){
+					var colli;
+					if(collect[i+1] instanceof Array){
+						colli = collect[i+1].slice(-1)[0];
+					}else{
+						colli = collect[i+1];
+					}
+					if(collect[i] instanceof Array){
+						collect[i].forEach(function(ai){
+							colli.append(ai)
+						})
+					}else{
+						colli.appendChild(collect[i]);
+					}
+				}
+				return collect.slice(-1)[0];
 			}
 			//加工
 			machining(aA){
@@ -65,84 +118,30 @@ let $ = (function(){
 				})
 				return dom;
 			}
-			append(sDom){
-				//元素数组,家属数组，包装后的数组
-				let els,family,collect = [];
-				if(sDom.indexOf("<")==-1){
-					[els,family]= this.turnHTML(sDom); 
-					// console.log(family);
-					els.forEach((val,i)=>{
-						var familyi = undefined;
-						val = this.Scalpel(val);
-						if(i)familyi = family[i-1];
-						// console.log(collect);
-						Packing(familyi,this.machining(val));
-					})
-
-                    //包装
-					function Packing(val,elsi){
-						let brother;
-						if(val == '+'){
-							var pop = collect.pop();
-							if(pop instanceof Array){
-								brother = pop;
-							}else{
-								brother = [pop];
-							}
-							brother.push(elsi);
-							collect.push(brother);
-						}else{
-							collect.push(elsi);
-						}
-                        // console.log(val,elsi);
-                    }
-				}else{
-
-				}
-				collect.reverse();
-// $('body').append('a[href=http://mwc.ac.cn/]{没有东西的网址}+h1{大佬}>b{好}[style=color:#ee6611]+span{乱敲}[style=font-size:16px;display:block;text-align:center]>b{span下的b}')
-				//出货
-				function Shipments(collect){
-					for(let i = 0;i<collect.length-1;i++){
-						var colli;
-						if(collect[i+1] instanceof Array){
-							colli = collect[i+1].slice(-1)[0];
-						}else{
-							colli = collect[i+1];
-						}
-						if(collect[i] instanceof Array){
-							collect[i].forEach(function(ai){
-								colli.append(ai)
-							})
-						}else{
-							colli.appendChild(collect[i]);
-						}
+			//包装
+			Packing(val,elsi,collect){
+				let brother;
+				if(val == '+'){
+					var pop = collect.pop();
+					if(pop instanceof Array){
+						brother = pop;
+					}else{
+						brother = [pop];
 					}
-					return collect.slice(-1)[0];
+					brother.push(elsi);
+					collect.push(brother);
+				}else{
+					collect.push(elsi);
 				}
-                console.log(collect);
-                var commodity = Shipments(collect);
-                // console.log(commodity);
-                this.from.forEach(function(val,i){
-                    if(commodity instanceof Array){
-                        commodity.forEach(function(dom){
-                            val.appendChild(dom);
-                        })
-                    }else{
-                        val.appendChild(commodity);
-                    }
-                })
-				// this.from.forEach(function(val,i){
-				// 	if(collect[i] instanceof Array){
-				// 		collect[i].forEach(function(dom){
-				// 			val.appendChild(dom);
-				// 		})
-				// 	}else{
-				// 		val.appendChild(collect[i]);
-				// 	}
-				// })
+            }
+// $('body').append('a[href=http://mwc.ac.cn/]{没有东西的网址}+h1{大佬}>b{好}[style=color:#ee6611]+span{乱敲}[style=font-size:16px;display:block;text-align:center]>b{span下的b}')
+			append(sDom){
+				//总仓调控
+				this.GeneralWarehouse(sDom,function(val,dom){
+					val.appendChild(dom);
+				});
 				return this;
-			}
+			},
 			/*
 			*改变背景颜色
 			*cols：颜色，up上限,lower下限，ch渐变度
