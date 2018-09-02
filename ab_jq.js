@@ -31,14 +31,16 @@ let $ = (function(){
 				var collect = this.EnterGoods(sDom);
 				//将返回数组appendChild到各自的父级上
                 collect = this.Shipments(collect);
+                console.log(this.from,collect);
                 this.from.forEach(function(val){
                     if(collect instanceof Array){
                         collect.forEach(function(dom){
                         	//this.from的元素，和即将插入的dom
-                        	fn(val,dom);
+                        	//不克隆的话，那么只有最后一个元素才会添加dom
+                        	fn(val,dom.cloneNode(true));
                         })
                     }else{
-                    	fn(val,collect)
+                    	fn(val,collect.cloneNode(true))
                     }
                 })
 			}
@@ -142,10 +144,48 @@ let $ = (function(){
 				}
 				return collect.slice(-1)[0];
 			}
+			//在被选元素的结尾插入内容
 			append(sDom){
 				//val为this.from的元素，dom是即将要被插入的dom碎片
 				this.GeneralWarehouse(sDom,function(val,dom){
 					val.appendChild(dom);
+				});
+				return this;
+			}
+			//在被选元素的开头插入内容
+			prepend(sDom){
+				this.GeneralWarehouse(sDom,function(val,dom){
+					var fdom = val.firstElementChild;
+					console.log(fdom);
+					if(fdom){
+						val.insertBefore(dom,fdom);
+					}else{
+						val.appendChild(dom);
+					}
+				});
+				return this;
+			}
+			//在被选元素之后插入内容
+			after(sDom){
+				this.GeneralWarehouse(sDom,function(val,dom){
+					var ndom = val.nextElementSibling;
+					if(ndom){
+						val.parentElement.insertBefore(dom,ndom);
+					}else{
+						val.parentElement.appendChild(dom);
+					}
+				});
+				return this;
+			}
+			//在被选元素之前插入内容
+			before(sDom){
+				this.GeneralWarehouse(sDom,function(val,dom){
+					var pdom = val.previousElementSibling;
+					if(pdom){
+						val.parentElement.insertBefore(dom,pdom);
+					}else{
+						val.parentElement.appendChild(dom);
+					}
 				});
 				return this;
 			}
