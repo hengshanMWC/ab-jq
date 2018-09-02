@@ -189,6 +189,18 @@ let $ = (function(){
 				});
 				return this;
 			}
+			//innerHTML模式
+			html(sDom){
+				this.form.forEach(function(val){
+					val.innerHTML = sDom;
+				})
+			}
+			//innerText模式
+			text(text){
+				this.form.forEach(function(val){
+					val.innerText = sDom;
+				})
+			}
 			/*
 			*改变背景颜色
 			*cols：颜色，up上限,lower下限，ch渐变度
