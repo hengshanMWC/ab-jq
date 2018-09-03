@@ -15,7 +15,7 @@ let $ = (function(){
 			*/
 			behavior(evfn){
 				let b;
-				this.from.forEach(function(val){
+				this.NodeList.forEach(function(val){
 					for(let key in evfn){
 						//是否为大写
 						b = /[A-Z]/.test(key[0]);
@@ -32,7 +32,7 @@ let $ = (function(){
 				//将返回数组appendChild到各自的父级上
                 collect = this.Shipments(collect);
                 console.log(this.from,collect);
-                this.from.forEach(function(val){
+                this.NodeList.forEach(function(val){
                     if(collect instanceof Array){
                         collect.forEach(function(dom){
                         	//this.from的元素，和即将插入的dom
@@ -156,7 +156,6 @@ let $ = (function(){
 			prepend(sDom){
 				this.GeneralWarehouse(sDom,function(val,dom){
 					var fdom = val.firstElementChild;
-					console.log(fdom);
 					if(fdom){
 						val.insertBefore(dom,fdom);
 					}else{
@@ -208,7 +207,7 @@ let $ = (function(){
 			setBackground({cols=[0,0,0],up=255,lower=0,ch=15}={}){
 				//sub是执行下标
 				let sub=0;
-				this.from.forEach(function(val){
+				this.NodeList.forEach(function(val){
 					setBaColor();
 					val.style.backgroundColor = `rgb(${cols[0]},${cols[1]},${cols[2]})`;
 				})
