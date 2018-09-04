@@ -7,6 +7,9 @@ let $ = (function(){
 				this.NodeList = $(selector);
 				this.from = Array.from(this.NodeList);
 				this.length = this.from.length;
+				this.NodeList.forEach((val,i)=>{
+					this[i] = val;
+				})
 			}
 			/*
 			*绑定事件
@@ -31,7 +34,6 @@ let $ = (function(){
 				var collect = this.EnterGoods(sDom);
 				//将返回数组appendChild到各自的父级上
                 collect = this.Shipments(collect);
-                console.log(this.from,collect);
                 this.NodeList.forEach(function(val){
                     if(collect instanceof Array){
                         collect.forEach(function(dom){
@@ -189,16 +191,62 @@ let $ = (function(){
 				return this;
 			}
 			//innerHTML模式
-			html(sDom){
-				this.form.forEach(function(val){
-					val.innerHTML = sDom;
-				})
+			html(sText){
+				if(sText){
+					this.NodeList.forEach(function(val){
+						val.innerHTML = sText;
+					})
+					return this;
+				}else{
+					var aS = [];
+					this.NodeList.forEach(function(val){
+						aS.push(val.innerHTML);
+					})
+					return aS;
+				}
+				
 			}
 			//innerText模式
-			text(text){
-				this.form.forEach(function(val){
-					val.innerText = sDom;
-				})
+			text(sText){
+				if(sText){
+					this.NodeList.forEach(function(val){
+						val.innerText = sText;
+					})
+					return this;
+				}else{
+					var aS = [];
+					this.NodeList.forEach(function(val){
+						aS.push(val.innerText);
+					})
+					return aS;
+				}
+			}
+			//设置css
+			//gs(字符串，数组，对象)
+			css(gs){
+				if(typeof gs == 'string'){
+					var aS = [];
+					this.NodeList.forEach(function(val){
+						aS.push(getComputedStyle(val)[gs]);
+					})
+					return aS;
+				}else if(gs instanceof Array){
+					var oS = {};
+					gs.forEach((key)=>{
+						oS[key] = [];
+						this.NodeList.forEach(function(val){
+							oS[key].push(getComputedStyle(val)[key]);
+						})
+					})
+					return oS;
+				}else if(gs instanceof Object){
+					for(let key in gs){
+						this.NodeList.forEach(function(val){
+							val.style[key] = gs[key];
+						})
+					}
+					return this;
+				}
 			}
 			/*
 			*改变背景颜色
