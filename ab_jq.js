@@ -223,13 +223,21 @@ let $ = (function(){
 			}
 			//设置css
 			//gs(字符串，数组，对象)
-			css(gs){
-				if(typeof gs == 'string'){
+			css(gs,set){
+				if(set){
+					this.NodeList.forEach(function(val){
+						val.style[gs] = set;
+					})
+					return this;
+				}
+				//字符串则返回数组
+				else if(typeof gs == 'string'){
 					var aS = [];
 					this.NodeList.forEach(function(val){
 						aS.push(getComputedStyle(val)[gs]);
 					})
 					return aS;
+				//数组则返回json=》key：array
 				}else if(gs instanceof Array){
 					var oS = {};
 					gs.forEach((key)=>{
@@ -239,6 +247,7 @@ let $ = (function(){
 						})
 					})
 					return oS;
+				//json则改变样式
 				}else if(gs instanceof Object){
 					for(let key in gs){
 						this.NodeList.forEach(function(val){
