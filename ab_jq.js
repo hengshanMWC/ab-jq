@@ -1,3 +1,4 @@
+'use strict';
 let $ = (function(){
 	function init(selector){
 		let $ = document.querySelectorAll.bind(document);
@@ -288,6 +289,10 @@ let $ = (function(){
 			}
 		}
 		return new AbJq(selector);
+	}
+	init.ajax = () => {
+		let request = new XMLHttpRequest();
+		console.log(this);
 	}
 	return init;
 })();
