@@ -94,7 +94,7 @@ let $ = (function(){
 						var attrs = val.slice(1,-1).split('=');
 						var attri = attrs.shift();
 						var sS = '';
-						attrs.forEach(function(val){
+						attrs.forEach((val)=>{
 							sS+=val;
 						})
 						dom.setAttribute(attri,sS);
@@ -194,13 +194,13 @@ let $ = (function(){
 			//innerHTML模式
 			html(sText){
 				if(sText){
-					this.NodeList.forEach(function(val){
+					this.NodeList.forEach((val)=>{
 						val.innerHTML = sText;
 					})
 					return this;
 				}else{
 					var aS = [];
-					this.NodeList.forEach(function(val){
+					this.NodeList.forEach((val)=>{
 						aS.push(val.innerHTML);
 					})
 					return aS;
@@ -210,13 +210,13 @@ let $ = (function(){
 			//innerText模式
 			text(sText){
 				if(sText){
-					this.NodeList.forEach(function(val){
+					this.NodeList.forEach((val)=>{
 						val.innerText = sText;
 					})
 					return this;
 				}else{
 					var aS = [];
-					this.NodeList.forEach(function(val){
+					this.NodeList.forEach((val)=>{
 						aS.push(val.innerText);
 					})
 					return aS;
@@ -226,7 +226,7 @@ let $ = (function(){
 			//gs(字符串，数组，对象)
 			css(gs,set){
 				if(set){
-					this.NodeList.forEach(function(val){
+					this.NodeList.forEach((val)=>{
 						val.style[gs] = set;
 					})
 					return this;
@@ -234,7 +234,7 @@ let $ = (function(){
 				//字符串则返回数组
 				else if(typeof gs == 'string'){
 					var aS = [];
-					this.NodeList.forEach(function(val){
+					this.NodeList.forEach((val)=>{
 						aS.push(getComputedStyle(val)[gs]);
 					})
 					return aS;
@@ -243,7 +243,7 @@ let $ = (function(){
 					var oS = {};
 					gs.forEach((key)=>{
 						oS[key] = [];
-						this.NodeList.forEach(function(val){
+						this.NodeList.forEach((val)=>{
 							oS[key].push(getComputedStyle(val)[key]);
 						})
 					})
@@ -257,6 +257,82 @@ let $ = (function(){
 					}
 					return this;
 				}
+			}
+			hasClass(p_class){
+				return this[0].className.indeOf(p_class) == -1;
+			}
+			fnClass(p_class,fnA,fnB){
+				let ac;
+				this.NodeList.forEach((val)=>{
+					var cn = val.className;
+					if(cn.length){
+						ac = cn.split(' ');
+					}else{
+						ac = [];
+					}
+					if(p_class instanceof Array){
+						p_class.forEach((sA)=>{
+							fnA(ac,sA);
+						})
+					}else{
+						fnB(ac);
+					}
+					val.className = ac.join(' ');
+				})
+				return this;
+			}
+			addClass(p_class){
+				var r_class;
+				//为undefined则返回数组
+				if(typeof p_class == 'undefined'){
+					r_class = [];
+					this.NodeList.forEach((val)=>{
+						r_class.push(val.className);
+					})
+				//为string则返回this
+				}else if(typeof p_class == 'string' || p_class instanceof Array){
+					r_class = this.fnClass(p_class,function(ac,sA){
+						ac.push(sA);
+					},function(ac){
+						ac.push(p_class);
+					});
+				}
+				return r_class;
+			}
+			removeClass(p_class){
+				if(typeof p_class == 'undefined'){
+					this.NodeList.forEach((val)=>{
+						val.className = '';
+					})
+				}else if(typeof p_class == 'string' || p_class instanceof Array){
+					this.fnClass(p_class,function(ac,sA){
+						let aA = ac.filter((_sA)=>_sA!=sA);
+						ac.length = 0;
+						ac.push(...aA);
+					},function(ac){
+						let aA = ac.filter((sA)=>sA!=p_class);
+						ac.length = 0;
+						ac.push(...aA);
+					});
+					// let ac;
+					// this.NodeList.forEach((val)=>{
+					// 	var cn = val.className;
+					// 	if(cn.length){
+					// 		ac = cn.split(' ');
+					// 	}else{
+					// 		ac = [];
+					// 	}
+					// 	if(p_class instanceof Array){
+					// 		p_class.forEach((sA)=>{
+					// 			ac = ac.filter((_sA)=>_sA!=sA);
+					// 		})
+					// 	}else{
+					// 		ac = ac.filter((sA)=>sA!=p_class);
+					// 	}
+					// 	val.className = ac.join(' ');
+					// })
+				}
+				return this;
 			}
 			/*
 			*改变背景颜色
