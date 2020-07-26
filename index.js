@@ -2,7 +2,7 @@
  * @Author: mwc 
  * @Date: 2020-07-26 20:18:02 
  * @Last Modified by: mwc
- * @Last Modified time: 2020-07-26 20:24:02
+ * @Last Modified time: 2020-07-26 20:49:12
  */
 'use strict';
 const $ = (function(){
@@ -313,13 +313,11 @@ const $ = (function(){
 						dom.className = cn+val.slice(1);
 						return;
 						case '['://属性
-						var attrs = val.slice(1,-1).split('=');
-						var attri = attrs.shift();
-						var sS = '';
-						attrs.forEach((val)=>{
-							sS+=val;
+						const attrValues = val.slice(1,-1).split(',');
+						attrValues.forEach(attrValue => {
+							const arr = attrValue.split('=')
+							dom.setAttribute(arr[0], arr[1]);
 						})
-						dom.setAttribute(attri,sS);
 						return;
 						case '{'://文本
 						var text = val.slice(1,-1);

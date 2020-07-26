@@ -1,5 +1,5 @@
 {
-  "name": "ab_jq",
+  "name": "ab-jq",
   "version": "1.0.0",
   "description": "类JQ",
   "main": "index.js",
