@@ -2,7 +2,7 @@
  * @Author: mwc 
  * @Date: 2020-07-26 20:18:02 
  * @Last Modified by: mwc
- * @Last Modified time: 2020-07-27 16:09:42
+ * @Last Modified time: 2020-07-27 17:55:53
  */
 const $ = (function(){
 	function init(selector){
@@ -287,7 +287,7 @@ const $ = (function(){
 			//从字符串中提取出元素字符串element(Array)和关系relationship(Array)（+，>）
 			_turnHTML(elements){
 				let element = elements.match(/[^>+]+/g);//截取元素
-				let relationship = elements.match(/[>+]+/g);//截取家属关系
+				let relationship = elements.match(/[>+]+/g);//截取元素关系
 				return [element,relationship];
 			}
 			//小刀切割，元素切割出来的数组
@@ -365,7 +365,10 @@ const $ = (function(){
 						colli.appendChild(collect[i]);
 					}
 				}
-				return collect.slice(-1)[0];
+				console.log(collect)
+				const a = collect.slice(-1)[0]
+				console.log(a)
+				return a
 			}
 		}
 		return new AbJq(selector);

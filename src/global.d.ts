@@ -1,0 +1,3 @@
+interface QElement {
+  element: Element
+}
