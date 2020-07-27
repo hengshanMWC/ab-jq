@@ -4,9 +4,131 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script src="../../index.js"></script>
 </head>
 <body>
-  <script src="../../index.js"></script>
-	<script src="./index.js"></script>
+  <div id="box">
+    <p class="element"><b>append例子：</b>$('#append').append('input[style=font-size: 22px, placeholder=append,onInput=setValue]')</p>
+    <div id="append" class="test"></div>
+    <script>
+      $('#append').append('input[style=font-size: 22px,placeholder=append,oninput=setValue()]')
+      function setValue () {
+        console.log('append', $('#append>input')[0].value)
+      }
+    </script>
+  </div>
+  <div id="box">
+    <p class="element"><b>prepend例子：</b>$('#prepend').prepend('input[style=font-size: 22px, placeholder=prepend,onInput=setValue]')</p>
+    <div id="prepend" class="test"></div>
+    <script>
+      $('#prepend').prepend('input[style=font-size: 22px,placeholder=prepend,oninput=setValue()]')
+      function setValue () {
+        console.log('prepend', $('#prepend>input')[0].value)
+      }
+    </script>
+  </div>
+  <div id="box">
+    <p class="element"><b>after例子：</b>$('#after').after('input[style=font-size: 22px, placeholder=after,onInput=setValue]')</p>
+    <div id="after" class="test"></div>
+    <script>
+      $('#after').after('input[style=font-size: 22px,placeholder=after,oninput=setValue()]')
+      function setValue () {
+        console.log('after', $('#after>input')[0].value)
+      }
+    </script>
+  </div>
+  <div id="box">
+    <p class="element"><b>before例子：</b>$('#before').before('input[style=font-size: 22px, placeholder=before,onInput=setValue]')</p>
+    <div id="before" class="test"></div>
+    <script>
+      $('#before').before('input[style=font-size: 22px,placeholder=before,oninput=setValue()]')
+      function setValue () {
+        console.log('before', $('#before>input')[0].value)
+      }
+    </script>
+  </div>
+  <div id="box">
+    <p class="element"><b>html例子：</b>$('#html').html('&lt;input style="font-size: 22px" placeholder="html" oninput="setValue()" />')</p>
+    <div id="html" class="test"></div>
+    <script>
+      $('#html').html('<input style="font-size: 22px" placeholder="html" oninput="setValue()" />')
+      function setValue () {
+        console.log('html', $('#html>input')[0].value)
+      }
+    </script>
+  </div>
+  <div id="box">
+    <p class="element"><b>text例子：</b> $('#text').text('text')</p>
+    <div id="text" class="test"></div>
+    <script>
+      $('#text').text('text')
+    </script>
+  </div>
+  <div id="box">
+    <p class="element"><b>css例子：</b>
+      <br>$('#css').css('color', 'red')
+      <br>$('#css').css({
+        <br>&emsp;'font-size': '22px',
+        <br>&emsp;'background': '#fff'
+        <br>})
+        <br>console.log($('#css').css('background'))
+        <br>console.log($('#css').css(['color', 'font-size']))
+    </p>
+    <div id="css" class="test" onclick="getStyle()">点击我返回style</div>
+    <script>
+      $('#css').css('color', 'red')
+      $('#css').css({
+        'font-size': '22px',
+        'background': '#fff'
+      })
+      console.log($('#css').css('background'))
+      console.log($('#css').css(['color', 'font-size']))
+      function getStyle () {
+        console.log($('#css').css())
+      }
+    </script>
+    <div id="box">
+      <p class="element"><b>addClass例子：</b> 
+        <br>$('#addClass').addClass('test1')
+        <br>$('#addClass').addClass(['test2', 'test3'])
+      </p>
+      <div id="addClass" class="test"></div>
+      <script>
+        $('#addClass').addClass('test1')
+        $('#addClass').addClass(['test2', 'test3'])
+      </script>
+    </div>
+    <div id="box">
+      <p class="element"><b>removeClass例子：</b> 
+        <br>$('#removeClass').removeClass('test1')
+        <br>$('#removeClass').removeClass(['test2', 'test3'])
+      </p>
+      <div id="removeClass" class="test test1 test2 test3"></div>
+      <script>
+        $('#removeClass').removeClass('test1')
+        $('#removeClass').removeClass(['test2', 'test3'])
+      </script>
+    </div>
+    <div id="box">
+      <p class="element"><b>on例子：</b>
+        <br>$('#on').on('click', handleEvent)
+        <br>$('#on').on({
+          <br>&emsp;'mouseover': handleEvent,
+          <br>&emsp;'mouseout': handleEvent
+          <br>})
+      </p>
+      <div id="on" class="test">事件触发</div>
+      <script>
+        function handleEvent () {
+          console.log('on事件')
+        }
+        $('#on').on('click', handleEvent)
+        $('#on').on({
+          'mouseover': handleEvent,
+          'mouseout': handleEvent
+        })
+      </script>
+    </div>
+  </div>
 </body>
 </html>

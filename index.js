@@ -2,7 +2,7 @@
  * @Author: mwc 
  * @Date: 2020-07-26 20:18:02 
  * @Last Modified by: mwc
- * @Last Modified time: 2020-07-26 20:49:12
+ * @Last Modified time: 2020-07-27 15:51:13
  */
 'use strict';
 const $ = (function(){
@@ -127,6 +127,8 @@ const $ = (function(){
 						})
 					}
 					return this;
+				} else if (gs === void 0 && set === void 0) {
+					return this.from.map(element => element.style)
 				}
 			}
 			hasClass(p_class){
@@ -207,16 +209,16 @@ const $ = (function(){
 			}
 			/*
 			*绑定事件
-			*参数{事件，函数}(object)
-			* 事件字母为大写为捕获阶段触发，小写为冒泡阶段触发
 			*/
-			on(evfn){
-				let b;
-				this.NodeList.forEach(function(val){
-					for(let key in evfn){
-						//是否为大写
-						b = /[A-Z]/.test(key[0]);
-						val.addEventListener(key.toLocaleLowerCase(),evfn[key],b);
+			on(type, cd, useCapture){
+				const typeIsObject = typeof type === 'object'
+				this.NodeList.forEach(function(element){
+					if (typeIsObject) {
+						for(let key in type){
+							element.addEventListener(key,type[key],cd);
+						}
+					} else {
+						element.addEventListener(type,cd,useCapture);
 					}
 				})
 				return this;
