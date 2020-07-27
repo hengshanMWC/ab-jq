@@ -210,7 +210,7 @@ const $ = (function(){
 			*参数{事件，函数}(object)
 			* 事件字母为大写为捕获阶段触发，小写为冒泡阶段触发
 			*/
-			behavior(evfn){
+			on(evfn){
 				let b;
 				this.NodeList.forEach(function(val){
 					for(let key in evfn){

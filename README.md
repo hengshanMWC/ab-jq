@@ -35,6 +35,13 @@ $()之前插入elemnt
 修改$()的innerText，不传参数则返回innerText
 ### css
 修改/返回style的值
-- 1参数string，返回$()style的1参数的值
-
-
+- 修改style。第一个参数是修改style的属性，第二个参数是style的属性的值
+- 1参数是object{属性：value}，修改$()多种style
+- 1参数string，返回$()style
+- 1参数是数组，返回$()多种style
+### addClass
+$()添加class（可传数组）。没有参数则返回$()的class
+### removeClass
+$()去掉class（可传数组）。没有参数则去掉$()的class
+### on
+$()添加事件，{事件：回调函数}
