@@ -1,0 +1,11 @@
+.box {
+  padding: 25px;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  box-shadow: 0 0 8px 2px #ccc;
+}
+p {
+  padding-bottom: 15px;
+  border-bottom: 1px #aaa solid;
+  margin: 0 0 30px 0;
+}

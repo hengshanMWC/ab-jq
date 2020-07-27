@@ -4,10 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <link rel="stylesheet" href="./index.css">
   <script src="../../index.js"></script>
 </head>
 <body>
-  <div id="box">
+  <div class="box">
     <p class="element"><b>append例子：</b>$('#append').append('input[style=font-size: 22px, placeholder=append,onInput=setValue]')</p>
     <div id="append" class="test"></div>
     <script>
@@ -17,7 +18,7 @@
       }
     </script>
   </div>
-  <div id="box">
+  <div class="box">
     <p class="element"><b>prepend例子：</b>$('#prepend').prepend('input[style=font-size: 22px, placeholder=prepend,onInput=setValue]')</p>
     <div id="prepend" class="test"></div>
     <script>
@@ -27,7 +28,7 @@
       }
     </script>
   </div>
-  <div id="box">
+  <div class="box">
     <p class="element"><b>after例子：</b>$('#after').after('input[style=font-size: 22px, placeholder=after,onInput=setValue]')</p>
     <div id="after" class="test"></div>
     <script>
@@ -37,7 +38,7 @@
       }
     </script>
   </div>
-  <div id="box">
+  <div class="box">
     <p class="element"><b>before例子：</b>$('#before').before('input[style=font-size: 22px, placeholder=before,onInput=setValue]')</p>
     <div id="before" class="test"></div>
     <script>
@@ -47,7 +48,7 @@
       }
     </script>
   </div>
-  <div id="box">
+  <div class="box">
     <p class="element"><b>html例子：</b>$('#html').html('&lt;input style="font-size: 22px" placeholder="html" oninput="setValue()" />')</p>
     <div id="html" class="test"></div>
     <script>
@@ -57,14 +58,14 @@
       }
     </script>
   </div>
-  <div id="box">
+  <div class="box">
     <p class="element"><b>text例子：</b> $('#text').text('text')</p>
     <div id="text" class="test"></div>
     <script>
       $('#text').text('text')
     </script>
   </div>
-  <div id="box">
+  <div class="box">
     <p class="element"><b>css例子：</b>
       <br>$('#css').css('color', 'red')
       <br>$('#css').css({
@@ -87,48 +88,48 @@
         console.log($('#css').css())
       }
     </script>
-    <div id="box">
-      <p class="element"><b>addClass例子：</b> 
-        <br>$('#addClass').addClass('test1')
-        <br>$('#addClass').addClass(['test2', 'test3'])
-      </p>
-      <div id="addClass" class="test"></div>
-      <script>
-        $('#addClass').addClass('test1')
-        $('#addClass').addClass(['test2', 'test3'])
-      </script>
-    </div>
-    <div id="box">
-      <p class="element"><b>removeClass例子：</b> 
-        <br>$('#removeClass').removeClass('test1')
-        <br>$('#removeClass').removeClass(['test2', 'test3'])
-      </p>
-      <div id="removeClass" class="test test1 test2 test3"></div>
-      <script>
-        $('#removeClass').removeClass('test1')
-        $('#removeClass').removeClass(['test2', 'test3'])
-      </script>
-    </div>
-    <div id="box">
-      <p class="element"><b>on例子：</b>
-        <br>$('#on').on('click', handleEvent)
-        <br>$('#on').on({
-          <br>&emsp;'mouseover': handleEvent,
-          <br>&emsp;'mouseout': handleEvent
-          <br>})
-      </p>
-      <div id="on" class="test">事件触发</div>
-      <script>
-        function handleEvent () {
-          console.log('on事件')
-        }
-        $('#on').on('click', handleEvent)
-        $('#on').on({
-          'mouseover': handleEvent,
-          'mouseout': handleEvent
-        })
-      </script>
-    </div>
+  </div>
+  <div class="box">
+    <p class="element"><b>addClass例子：</b> 
+      <br>$('#addClass').addClass('test1')
+      <br>$('#addClass').addClass(['test2', 'test3'])
+    </p>
+    <div id="addClass" class="test"></div>
+    <script>
+      $('#addClass').addClass('test1')
+      $('#addClass').addClass(['test2', 'test3'])
+    </script>
+  </div>
+  <div class="box">
+    <p class="element"><b>removeClass例子：</b> 
+      <br>$('#removeClass').removeClass('test1')
+      <br>$('#removeClass').removeClass(['test2', 'test3'])
+    </p>
+    <div id="removeClass" class="test test1 test2 test3"></div>
+    <script>
+      $('#removeClass').removeClass('test1')
+      $('#removeClass').removeClass(['test2', 'test3'])
+    </script>
+  </div>
+  <div class="box">
+    <p class="element"><b>on例子：</b>
+      <br>$('#on').on('click', handleEvent)
+      <br>$('#on').on({
+        <br>&emsp;'mouseover': handleEvent,
+        <br>&emsp;'mouseout': handleEvent
+        <br>})
+    </p>
+    <div id="on" class="test">事件触发</div>
+    <script>
+      function handleEvent () {
+        console.log('on事件')
+      }
+      $('#on').on('click', handleEvent)
+      $('#on').on({
+        'mouseover': handleEvent,
+        'mouseout': handleEvent
+      })
+    </script>
   </div>
 </body>
 </html>
