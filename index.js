@@ -2,9 +2,8 @@
  * @Author: mwc 
  * @Date: 2020-07-26 20:18:02 
  * @Last Modified by: mwc
- * @Last Modified time: 2020-07-27 15:51:13
+ * @Last Modified time: 2020-07-27 16:09:42
  */
-'use strict';
 const $ = (function(){
 	function init(selector){
 		const $ = document.querySelectorAll.bind(document);
