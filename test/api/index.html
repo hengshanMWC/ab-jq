@@ -49,6 +49,40 @@
     </script>
   </div>
   <div class="box">
+    <p class="element"><b>remove例子：</b> </b>
+      <br>$('#remove>p').on('click', function () {
+        <br>&emsp;$('#remove>p').remove()
+        <br>&emsp;})</p>
+    <div id="remove" class="test">
+      <p>
+        父。点击删除父元素
+        <b>子</b>
+      </p>
+    </div>
+    <script>
+      $('#remove>p').on('click', function () {
+        $('#remove>p').remove()
+      })
+    </script>
+  </div>
+  <div class="box">
+    <p class="element"><b>empty例子：</b>
+      <br>$('#empty>p').on('click', function () {
+        <br>&emsp;$('#empty>p').empty()
+        <br>&emsp;})</p>
+    <div id="empty" class="test">
+      <p>
+        父。点击清除子元素
+        <b>子</b>
+      </p>
+    </div>
+    <script>
+      $('#empty>p').on('click', function () {
+        $('#empty>p').empty()
+      })
+    </script>
+  </div>
+  <div class="box">
     <p class="element"><b>html例子：</b>$('#html').html('&lt;input style="font-size: 22px" placeholder="html" oninput="setValue()" />')</p>
     <div id="html" class="test"></div>
     <script>
@@ -113,56 +147,35 @@
   </div>
   <div class="box">
     <p class="element"><b>on例子：</b>
-      <br>$('#on').on('click', handleEvent)
-      <br>$('#on').on({
+      <br>$('#on>span').on('click', handleEvent)
+      <br>$('#on>span').on({
         <br>&emsp;'mouseover': handleEvent,
         <br>&emsp;'mouseout': handleEvent
         <br>})
+      <br>function removeEvent () {
+        <br>&emsp;$('#on>span').off('click', handleEvent)
+        <br>&emsp;$('#on>span').off('mouseover', handleEvent)
+        <br>&emsp;$('#on>span').off('mouseout', handleEvent)
+      <br>}
     </p>
-    <div id="on" class="test">事件触发</div>
+    <div id="on" class="test">
+      <span>事件触发</span>
+      <button onclick="removeEvent()">清除事件</button>
+    </div>
     <script>
       function handleEvent () {
         console.log('on事件')
       }
-      $('#on').on('click', handleEvent)
-      $('#on').on({
+      $('#on>span').on('click', handleEvent)
+      $('#on>span').on({
         'mouseover': handleEvent,
         'mouseout': handleEvent
       })
-    </script>
-  </div>
-  <div class="box">
-    <p class="element"><b>remove例子：</b> </b>
-      <br>$('#remove>p').on('click', function () {
-        <br>&emsp;$('#remove>p').remove()
-        <br>&emsp;})</p>
-    <div id="remove" class="test">
-      <p>
-        父。点击删除父元素
-        <b>子</b>
-      </p>
-    </div>
-    <script>
-      $('#remove>p').on('click', function () {
-        $('#remove>p').remove()
-      })
-    </script>
-  </div>
-  <div class="box">
-    <p class="element"><b>empty例子：</b>
-      <br>$('#empty>p').on('click', function () {
-        <br>&emsp;$('#empty>p').empty()
-        <br>&emsp;})</p>
-    <div id="empty" class="test">
-      <p>
-        父。点击清除子元素
-        <b>子</b>
-      </p>
-    </div>
-    <script>
-      $('#empty>p').on('click', function () {
-        $('#empty>p').empty()
-      })
+      function removeEvent () {
+        $('#on>span').off('click', handleEvent)
+        $('#on>span').off('mouseover', handleEvent)
+        $('#on>span').off('mouseout', handleEvent)
+      }
     </script>
   </div>
 </body>

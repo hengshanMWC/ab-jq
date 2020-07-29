@@ -2,6 +2,10 @@
 Emmet方式生成dom
 
 包装const $ = document.querySelectorAll.bind(document);类JQ库
+
+···
+npm i -S qelements
+···
 # 特性
 残缺版Emmet，支持以下操作符
 ```html

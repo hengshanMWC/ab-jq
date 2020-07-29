@@ -1,5 +1,7 @@
-interface QElements extends QEApi {}
+interface QElements extends QEApi {
+}
 interface QElements extends Array<QElement> {
+  $filter(selectors: string): QElements
   selectors: string
   nodeList: NodeListOf<Element>
 }
@@ -27,7 +29,7 @@ interface QEApi {
   on(type: string[], listener: Function, options?: Boolean | Object): QElement
   on(type: eventFunctions, options?: Boolean | Object): QElement
   on(type, listener, options?): QElement
-  off (type: string, listener: Function): QElement
+  off(type: string, listener: Function): QElement
 }
 type ElementElements = HTMLElement | HTMLElement[]
 type ElementContainer = Array<ElementElements>
