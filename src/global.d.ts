@@ -25,6 +25,8 @@ interface QEApi {
   on(type: string[], listener: Function, options?: Boolean | Object): QElement
   on(type: eventFunctions, options?: Boolean | Object): QElement
   on(type, listener, options?): QElement
+  remove(selectors: string): QElement
+  empty(selectors: string): QElement
 }
 type ElementElements = HTMLElement | HTMLElement[]
 type ElementContainer = Array<ElementElements>

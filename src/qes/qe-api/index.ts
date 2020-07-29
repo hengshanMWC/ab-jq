@@ -5,6 +5,8 @@ export default {
   prepend: (<QElements['prepend']>createElement('prepend')),
   after: (<QElements['after']>createElement('after')),
   before: (<QElements['before']>createElement('before')),
+  remove: (<QElements['remove']>createFor('remove')),
+  empty: (<QElements['empty']>createFor('empty')),
   html: (<QElements['html']>createFor('html')),
   text: (<QElements['text']>createFor('text')),
   css: (<QElements['css']>createFor('css')),

@@ -29,14 +29,14 @@ export default [
       typescript({
         typescript: tscompile
       }),
-      terser({
-        compress: {
-          pure_getters: true,
-          unsafe: true,
-          unsafe_comps: true,
-          warnings: false
-        }
-      })
+      // terser({
+      //   compress: {
+      //     pure_getters: true,
+      //     unsafe: true,
+      //     unsafe_comps: true,
+      //     warnings: false
+      //   }
+      // })
     ]
   },
   {

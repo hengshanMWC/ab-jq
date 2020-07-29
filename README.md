@@ -9,8 +9,8 @@ Emmet方式生成dom
 <div id="id"></div>
 <!-- .:class - div.class -->
 <div class="class"></div>
-<!-- []:属性attr - input[style=color:red;font-size:30px,value=value,id=id] -->
-<input style="color: red;font-size: 30px" value="value" id="id" />
+<!-- []:属性attr - input.class1.class2#id[style=color:red;font-size:30px,value=value] -->
+<input class="class1 class2" id="id" style="color:red;font-size:30px" value="value">
 <!-- {}:文本 - div{text} -->
 <div>text</div>
 ```

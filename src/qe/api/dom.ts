@@ -35,6 +35,23 @@ export function before (htmlElement: HTMLElement): QElement {
     : this.append(htmlElement)
   return this
 }
+/**
+ * 删除
+ */
+export function remove (): QElement {
+  this.element.parentElement.removeChild(this.element)
+  return this
+}
+/**
+ * 删除子元素
+ */
+export function empty (): QElement {
+  const children = this.element.children
+  for (let i = 0; i < children.length; i++) {
+    this.element.removeChild(children[i])
+  }
+  return this
+}
 /** 
  * 返回/修改innerHTML
 */

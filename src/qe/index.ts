@@ -1,4 +1,4 @@
-import { append, prepend, after, before, html, text } from './api/dom'
+import { append, prepend, after, before, remove, empty, html, text } from './api/dom'
 import { css, addClass, removeClass } from './api/attr'
 import { on } from './api/evnet'
 export default function QElement (element: Element) {
@@ -8,6 +8,8 @@ QElement.prototype.append = append
 QElement.prototype.prepend = prepend
 QElement.prototype.after = after
 QElement.prototype.before = before
+QElement.prototype.remove = remove
+QElement.prototype.empty = empty
 QElement.prototype.html = html
 QElement.prototype.text = text
 QElement.prototype.css = css
