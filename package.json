@@ -3,9 +3,15 @@
   "version": "1.0.0",
   "description": "类JQ",
   "main": "index.js",
+  "types": "./types/index.d.ts",
   "directories": {
-    "test": "test"
+    "test": "test",
+    "build": "./node_modules/.bin/rollup -c"
   },
+  "files": [
+    "dist/",
+    "types/"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -16,12 +22,20 @@
   "keywords": [
     "jq",
     "dom",
-    "Emmet"
+    "element"
   ],
   "author": "mwc",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/hengshanMWC/ab-jq/issues"
   },
-  "homepage": "https://github.com/hengshanMWC/ab-jq#readme"
+  "homepage": "https://github.com/hengshanMWC/ab-jq#readme",
+  "devDependencies": {
+    "camelcase": "^6.0.0",
+    "rollup": "^2.23.0",
+    "rollup-plugin-terser": "^6.1.0",
+    "rollup-plugin-typescript2": "^0.27.1",
+    "typescript": "^3.9.7",
+    "validate-npm-package-name": "^3.0.0"
+  }
 }

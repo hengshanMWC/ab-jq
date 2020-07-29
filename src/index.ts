@@ -1,2 +1,2 @@
 import container from './constructor/container'
-const $: Function = container
+export default container
