@@ -5,6 +5,10 @@ const router = [
     href: 'api'
   },
   {
+    title: '输入生成',
+    href: 'input'
+  },
+  {
     title: '拖拽',
     href: 'drop'
   }

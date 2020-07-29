@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script src="../../dist/qelements.global.min.js"></script>
+  <script>
+    const input = 'input#main[style=font-size: 32px;width: 70%;padding: 10px 15px;color: #8f8f8f;border-radius: 12px;border:2px solid #8cc4ff;outline: none,placeholder=请输入Emmet,onkeypress=handleKey(event)]'
+    const button = 'button{渲染,也可以回车}[style=margin-left: 15px;width: 15%;height: 60px,onclick=render()]'
+    $('body').append(`${input}+${button}`)
+    function handleKey (event) {
+      if (event.keyCode == 13) render()
+    }
+    function render () {
+      const value = $('#main')[0].element.value
+      if (!value) return alert('输入框不能为空')
+      $('body').append(value)
+      $('#main')[0].element.value = ''
+    }
+  </script>
+</body>
+</html>
