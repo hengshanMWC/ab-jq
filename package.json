@@ -8,8 +8,7 @@
     "test": "test"
   },
   "files": [
-    "dist/",
-    "types/"
+    "dist/"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

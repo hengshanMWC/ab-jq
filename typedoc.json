@@ -1,4 +1,9 @@
 {
   "excludePrivate": true,
-  "exclude": "./src/qes/**"
+  "exclude": [
+    "./src/qe/index.ts",
+    "./src/qes/qe-api/*",
+    "./src/qes/createHtmlElement.ts",
+    "./src/qes/index.ts"
+  ]
 }
