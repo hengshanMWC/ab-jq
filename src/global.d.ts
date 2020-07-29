@@ -11,6 +11,8 @@ interface QEApi {
   prepend(htmlElement: HTMLElement): QElement
   after(htmlElement: HTMLElement): QElement
   before(htmlElement: HTMLElement): QElement
+  remove(): QElement
+  empty(): QElement
   html(HTMLString?: any): QElement
   text(str?: any): QElement
   css(key: string, value: string | number): QElement
@@ -25,8 +27,7 @@ interface QEApi {
   on(type: string[], listener: Function, options?: Boolean | Object): QElement
   on(type: eventFunctions, options?: Boolean | Object): QElement
   on(type, listener, options?): QElement
-  remove(selectors: string): QElement
-  empty(selectors: string): QElement
+  off (type: string, listener: Function): QElement
 }
 type ElementElements = HTMLElement | HTMLElement[]
 type ElementContainer = Array<ElementElements>

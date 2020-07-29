@@ -13,4 +13,5 @@ export default {
   addClass: (<QElements['addClass']>createFor('addClass')),
   removeClass: (<QElements['removeClass']>createFor('removeClass')),
   on: (<QElements['on']>createFor('on')),
+  off: (<QElements['off']>createFor('off')),
 }

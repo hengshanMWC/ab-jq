@@ -18,3 +18,10 @@ export function on (type, listener, options?): QElement {
   }
   return this
 }
+/** 
+ * 解绑事件
+*/
+export function off (type: string, listener: Function): QElement {
+  this.element.removeEventListener(type, listener)
+  return this
+}

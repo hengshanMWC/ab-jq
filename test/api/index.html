@@ -131,5 +131,39 @@
       })
     </script>
   </div>
+  <div class="box">
+    <p class="element"><b>remove例子：</b> </b>
+      <br>$('#remove>p').on('click', function () {
+        <br>&emsp;$('#remove>p').remove()
+        <br>&emsp;})</p>
+    <div id="remove" class="test">
+      <p>
+        父。点击删除父元素
+        <b>子</b>
+      </p>
+    </div>
+    <script>
+      $('#remove>p').on('click', function () {
+        $('#remove>p').remove()
+      })
+    </script>
+  </div>
+  <div class="box">
+    <p class="element"><b>empty例子：</b>
+      <br>$('#empty>p').on('click', function () {
+        <br>&emsp;$('#empty>p').empty()
+        <br>&emsp;})</p>
+    <div id="empty" class="test">
+      <p>
+        父。点击清除子元素
+        <b>子</b>
+      </p>
+    </div>
+    <script>
+      $('#empty>p').on('click', function () {
+        $('#empty>p').empty()
+      })
+    </script>
+  </div>
 </body>
 </html>

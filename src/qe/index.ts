@@ -1,6 +1,6 @@
 import { append, prepend, after, before, remove, empty, html, text } from './api/dom'
 import { css, addClass, removeClass } from './api/attr'
-import { on } from './api/evnet'
+import { on, off } from './api/evnet'
 export default function QElement (element: Element) {
   this.element = element
 }
@@ -16,3 +16,4 @@ QElement.prototype.css = css
 QElement.prototype.addClass = addClass
 QElement.prototype.removeClass = removeClass
 QElement.prototype.on = on
+QElement.prototype.off = off
