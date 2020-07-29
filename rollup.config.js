@@ -38,5 +38,25 @@ export default [
         }
       })
     ]
+  },
+  {
+    input: './src/index.ts',
+    output: {
+      file: `dist/${moduleName}.es.min.js`,
+      format: 'es',
+    },
+    plugins: [
+      typescript({
+        typescript: tscompile
+      }),
+      terser({
+        compress: {
+          pure_getters: true,
+          unsafe: true,
+          unsafe_comps: true,
+          warnings: false
+        }
+      })
+    ]
   }
 ]

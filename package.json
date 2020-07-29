@@ -2,7 +2,7 @@
   "name": "qelements",
   "version": "1.0.0",
   "description": "类JQ",
-  "main": "index.js",
+  "module": "./dist/qelements.es.min.js",
   "types": "./dist/index.d.ts",
   "directories": {
     "test": "test"
@@ -13,7 +13,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "docs": "typedoc --out docs"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "rollup": "^2.23.0",
     "rollup-plugin-terser": "^6.1.0",
     "rollup-plugin-typescript2": "^0.27.1",
+    "typedoc": "^0.17.8",
     "typescript": "^3.9.7",
     "validate-npm-package-name": "^3.0.0"
   }
