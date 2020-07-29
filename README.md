@@ -3,7 +3,7 @@ Emmet方式生成dom
 
 包装const $ = document.querySelectorAll.bind(document);类JQ库
 # 特性
-残缺版Emmet，支持一下操作符
+残缺版Emmet，支持以下操作符
 ```html
 <!-- #:id - div#id -->
 <div id="id"></div>
