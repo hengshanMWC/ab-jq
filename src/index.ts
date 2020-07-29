@@ -1,2 +1,2 @@
-import container from './qes'
-export default container
+import createQElements from './qes'
+export default createQElements

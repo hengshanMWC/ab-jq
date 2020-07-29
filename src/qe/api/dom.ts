@@ -1,7 +1,13 @@
+/** 
+ * 结尾插入
+*/
 export function append (htmlElement: HTMLElement): QElement {
   this.element.appendChild(htmlElement)
   return this
 }
+/** 
+ * 头部插入
+*/
 export function prepend (htmlElement: HTMLElement): QElement {
   const he = this.element.firstElementChild
   he 
@@ -9,6 +15,9 @@ export function prepend (htmlElement: HTMLElement): QElement {
     : this.append(htmlElement)
   return this
 }
+/** 
+ * 之后插入
+*/
 export function after (htmlElement: HTMLElement): QElement {
   const he = this.element.nextElementSibling
   he 
@@ -16,6 +25,9 @@ export function after (htmlElement: HTMLElement): QElement {
     : this.append(htmlElement)
   return this
 }
+/** 
+ * 之前插入
+*/
 export function before (htmlElement: HTMLElement): QElement {
   const he = this.element.previousElementSibling
   he 
@@ -23,6 +35,9 @@ export function before (htmlElement: HTMLElement): QElement {
     : this.append(htmlElement)
   return this
 }
+/** 
+ * 返回/修改innerHTML
+*/
 export function html (HTMLString?: any) {
   if (HTMLString) {
     this.element.innerHTML = HTMLString
@@ -31,6 +46,9 @@ export function html (HTMLString?: any) {
     return this.element.innerHTML
   }
 }
+/** 
+ * 返回/修改innerText
+*/
 export function text (str?: any) {
   if (str) {
     this.element.innerText = str

@@ -1,4 +1,4 @@
-import createHtmlElement from '../private/createHtmlElement'
+import createHtmlElement from '../createHtmlElement'
 import QElement from '../../qe/index'
 export function createElement (api: string): Function {
   return function (elements: string) {

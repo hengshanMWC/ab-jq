@@ -14,7 +14,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup -c",
-    "docs": "typedoc --out docs"
+    "docs": "typedoc"
   },
   "repository": {
     "type": "git",

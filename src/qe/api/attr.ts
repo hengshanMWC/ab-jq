@@ -1,3 +1,6 @@
+/** 
+ * 返回/修改style
+*/
 export function css (key: string, value: string | number): QElement
 export function css (key: string): string
 export function css (key: Array<string>): object
@@ -23,6 +26,9 @@ export function css (key?, value?): any {
     return this.element.style
   }
 }
+/** 
+ * 返回/修改className
+*/
 export function addClass (cs?: string | string[]): string | QElement {
   //为undefined则返回数组
   if(typeof cs === 'undefined'){
@@ -37,6 +43,7 @@ export function addClass (cs?: string | string[]): string | QElement {
     return this
   }
 }
+// 删除className
 export function removeClass (cs?: string | string[]): QElement {
   if(typeof cs === 'undefined'){
     this.element.className = ''
@@ -54,6 +61,9 @@ export function removeClass (cs?: string | string[]): QElement {
   }
   return this
 }
+/** 
+ * @private
+*/
 function fnClass (element: Element, cs: string | string[], cdArray: Function, cdString: Function){
   let cn = element.className
   let ac: Array<string> = cn.length ? cn.split(' ') : []

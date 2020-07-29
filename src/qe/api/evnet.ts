@@ -1,3 +1,6 @@
+/** 
+ * 绑定事件
+*/
 export function on (type: string, listener: Function, options?: Boolean | Object): QElement
 export function on (type: string[], listener: Function, options?: Boolean | Object): QElement
 export function on (type: eventFunctions, options?: Boolean | Object): QElement
