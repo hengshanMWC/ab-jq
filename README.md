@@ -1,5 +1,7 @@
 # 项目介绍
-闲来无事巩固下dom的操作，写了以下
+闲来无事写一个Emmet版的JQ巩固下dom知识
+
+![演示gif](https://user-gold-cdn.xitu.io/2020/7/30/1739d7d53c47854c?w=600&h=338&f=gif&s=112119)
 - 基于document.querySelectorAll封装的JQ
 - 类Emmet语法创建dom
 - ts
